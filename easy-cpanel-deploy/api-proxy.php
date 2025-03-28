@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $requestPath = $_SERVER['PATH_INFO'] ?? '';
 
 // DeepSeek API Configuration
-$apiKey = 'sk-b2685fbe1ad44eebbc6193148a31dade'; // Replace with your actual API key
+$apiKey = 'your-deepseek-api-key'; // Replace with your actual API key
 $deepseekApiUrl = 'https://api.deepseek.com/v1/chat/completions';
 
 // Get request body

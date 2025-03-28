@@ -1,7 +1,7 @@
 # Ratidzo Health AI
 
 <p align="center">
-  <img src="assets/favicon.png" alt="Ratidzo Health AI Logo" width="120"/>
+  <img src="assets/ratidzo-logo.svg" alt="Ratidzo Health AI Logo" width="120"/>
 </p>
 
 Ratidzo Health AI is an intelligent health assistant platform that provides non-prescriptive health insights based on user symptoms. Built with South African health needs in mind, it incorporates features like AI-powered symptom analysis and a chat interface for interactive health queries.

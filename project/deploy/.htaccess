@@ -1,0 +1,42 @@
+# Ratidzo Health AI - .htaccess Configuration for cPanel
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# If a file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# For Node.js proxy with cPanel
+# Uncomment and modify these lines if using cPanel's Node.js Application Manager
+# RewriteRule ^api/(.*) http://localhost:3000/api/$1 [P,L]
+# RewriteRule ^socket.io/(.*) http://localhost:3000/socket.io/$1 [P,L]
+
+# Otherwise, serve index.html (for SPA routing)
+RewriteRule ^ index.html [L]
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.deepseek.com;"
+</IfModule>
+
+# Set caching headers for static assets
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# PHP settings (if using PHP alongside Node.js)
+# php_flag display_errors Off
+# php_value max_execution_time 300
+# php_value max_input_time 300
+# php_value memory_limit 256M
+# php_value post_max_size 50M
+# php_value upload_max_filesize 50M
+
+# Custom error pages
+ErrorDocument 404 /index.html
+ErrorDocument 500 /index.html 

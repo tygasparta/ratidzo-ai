@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratidzo Health AI - Chat Test</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .test-controls {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-radius: 4px;
+    }
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .chat-button button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(to right, #4ade80, #06b6d4);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-button button:hover {
+      transform: scale(1.05);
+    }
+    .test-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #console-output {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 15px;
+      border-radius: 4px;
+      font-family: monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ratidzo Health AI - Chat Test</h1>
+    
+    <div class="test-controls">
+      <h2>Debug Console</h2>
+      <button id="test-chat-api" class="test-button">Test Chat API</button>
+      <button id="clear-console" class="test-button">Clear Console</button>
+      <div id="console-output">Console output will appear here...</div>
+    </div>
+    
+    <div class="chat-button">
+      <button id="health-chat-button" aria-label="Chat with Ratidzo Health AI" aria-expanded="false">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Console logging to display in the debug console
+    const originalConsoleLog = console.log;
+    const originalConsoleError = console.error;
+    
+    console.log = function(...args) {
+      const output = args.map(arg => {
+        if (typeof arg === 'object') {
+          return JSON.stringify(arg, null, 2);
+        }
+        return String(arg);
+      }).join(' ');
+      
+      const consoleOutput = document.getElementById('console-output');
+      consoleOutput.innerHTML += `<div style="color: #4CAF50;">LOG: ${output}</div>`;
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      
+      originalConsoleLog.apply(console, args);
+    };
+    
+    console.error = function(...args) {
+      const output = args.map(arg => {
+        if (typeof arg === 'object') {
+          return JSON.stringify(arg, null, 2);
+        }
+        return String(arg);
+      }).join(' ');
+      
+      const consoleOutput = document.getElementById('console-output');
+      consoleOutput.innerHTML += `<div style="color: #f44336;">ERROR: ${output}</div>`;
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      
+      originalConsoleError.apply(console, args);
+    };
+    
+    // Test chat API
+    document.getElementById('test-chat-api').addEventListener('click', function() {
+      console.log('Testing chat API...');
+      
+      fetch('http://localhost:3000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Hello, this is a test message',
+          history: []
+        })
+      })
+      .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          return response.text().then(text => {
+            throw new Error(`HTTP error! Status: ${response.status}, Details: ${text}`);
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success! Response received');
+        console.log('Response data:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error.message);
+      });
+    });
+    
+    // Clear console
+    document.getElementById('clear-console').addEventListener('click', function() {
+      document.getElementById('console-output').innerHTML = 'Console cleared...';
+    });
+    
+    // Load the chat.js module and initialize chat
+    import('./js/chat.js')
+      .then(module => {
+        console.log('Chat module loaded successfully');
+        module.initChat();
+      })
+      .catch(error => {
+        console.error('Failed to load chat module:', error);
+      });
+  </script>
+</body>
+</html> 

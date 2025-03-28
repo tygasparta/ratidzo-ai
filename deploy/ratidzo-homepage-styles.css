@@ -1,0 +1,204 @@
+/**
+ * Ratidzo Health AI - Homepage Enhancement Styles
+ * This CSS fixes layout issues and ensures all homepage elements are properly styled
+ */
+
+/* Force display of all major sections */
+#root, main, section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Enhance hero section */
+[id*="hero"], [class*="hero"], section:first-of-type {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 60vh;
+  padding: 2rem 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  [id*="hero"], [class*="hero"], section:first-of-type {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Fix headings */
+h1, h2, h3, [class*="heading"], [class*="title"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-bottom: 1rem;
+}
+
+/* Main heading */
+h1, [class*="heading"]:first-child, [class*="title"]:first-child {
+  font-size: 2.5rem !important;
+  font-weight: bold !important;
+  background: linear-gradient(90deg, #16a34a, #eab308);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle */
+h2, [class*="subtitle"] {
+  font-size: 1.5rem !important;
+  color: #a0aec0 !important;
+  margin-bottom: 1rem;
+}
+
+/* Description text */
+p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: #e2e8f0 !important;
+  margin-bottom: 1.5rem !important;
+  max-width: 600px;
+}
+
+/* Image container and image */
+[class*="image-container"], [class*="banner"], [class*="hero"] img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Ensure buttons are styled correctly */
+button, [class*="button"], a[role="button"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.375rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Primary action button - using class-based selectors */
+[class*="primary"], 
+[class*="check-symptoms"],
+[class*="check_symptoms"],
+.check-symptoms-btn,
+.primary-btn {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Target buttons based on attribute contains */
+button[class*="check"], 
+button[class*="symptom"], 
+a[class*="check"], 
+a[class*="symptom"] {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Apply green styling to all buttons in specific sections */
+section:first-of-type button:first-of-type,
+[id*="hero"] button:first-of-type,
+[class*="hero"] button:first-of-type {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Chat button - using class-based selectors */
+[class*="chat"],
+[class*="secondary"],
+.chat-btn,
+.secondary-btn {
+  background-color: transparent !important;
+  color: #16a34a !important;
+  border: 1px solid #16a34a !important;
+}
+
+/* Target chat buttons based on attribute contains */
+button[class*="chat"], 
+a[class*="chat"] {
+  background-color: transparent !important;
+  color: #16a34a !important;
+  border: 1px solid #16a34a !important;
+}
+
+/* Apply chat button styling to second buttons in sections */
+section:first-of-type button:nth-of-type(2),
+[id*="hero"] button:nth-of-type(2),
+[class*="hero"] button:nth-of-type(2) {
+  background-color: transparent !important;
+  color: #16a34a !important;
+  border: 1px solid #16a34a !important;
+}
+
+/* Logo section */
+[class*="logo"], [id*="logo"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fix header/navbar */
+header, nav, [class*="header"], [class*="navbar"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  z-index: 50;
+}
+
+/* Fix background decorations if they exist */
+[class*="decoration"], [class*="bg-"], [class*="background"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.2 !important; /* Subtle background elements */
+  z-index: -1;
+}
+
+/* Ensure features section is visible if it exists */
+[id*="features"], [class*="features"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 2rem 1rem;
+}
+
+/* Feature cards */
+[class*="feature"], [class*="card"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: rgba(26, 32, 44, 0.7);
+  border: 1px solid rgba(74, 85, 104, 0.3);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: transform 0.2s;
+}
+
+/* Footer if it exists */
+footer, [class*="footer"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  text-align: center;
+} 

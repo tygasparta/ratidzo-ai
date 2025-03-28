@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratidzo Health AI - Test Page</title>
+  <style>
+    body {
+      background-color: #1a202c;
+      color: white;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #48bb78;
+      margin-bottom: 20px;
+    }
+    .test-button {
+      background-color: #48bb78;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .error-message {
+      background-color: rgba(254, 202, 202, 0.1);
+      color: #f87171;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 20px;
+      text-align: left;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ratidzo Health AI - Test Page</h1>
+    <p>This is a simple test page to diagnose rendering issues.</p>
+    <div id="result">Click the button to test JavaScript functionality</div>
+    <button class="test-button" onclick="testFunctionality()">Test Functionality</button>
+    <div id="error-container"></div>
+  </div>
+
+  <script>
+    function testFunctionality() {
+      try {
+        // Test basic DOM manipulation
+        document.getElementById('result').textContent = 'JavaScript is working correctly!';
+        
+        // Test localStorage access (often breaks in some browsers/privacy settings)
+        localStorage.setItem('test', 'test');
+        localStorage.removeItem('test');
+        
+        // Test modern JavaScript features
+        const testAsync = async () => 'Async functions work';
+        testAsync().then(message => {
+          document.getElementById('result').textContent += ' ' + message;
+        });
+        
+        // Load React (from CDN) to test script loading capabilities
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/react@18/umd/react.development.js';
+        script.onload = () => {
+          document.getElementById('result').textContent += ' React loaded successfully!';
+        };
+        script.onerror = (error) => {
+          displayError('Failed to load React script: ' + error);
+        };
+        document.body.appendChild(script);
+      } catch (error) {
+        displayError('Error: ' + error.message);
+      }
+    }
+    
+    function displayError(message) {
+      const errorContainer = document.getElementById('error-container');
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.textContent = message;
+      errorContainer.appendChild(errorDiv);
+    }
+    
+    // Check for common browser compatibility issues
+    window.addEventListener('load', function() {
+      try {
+        // Log browser information
+        const browserInfo = `
+Browser: ${navigator.userAgent}
+Platform: ${navigator.platform}
+Cookies Enabled: ${navigator.cookieEnabled}
+`;
+        console.log(browserInfo);
+        
+        // Check if we have a root element (common issue in some apps)
+        if (!document.getElementById('root')) {
+          console.warn('No #root element found in the document');
+        }
+      } catch (error) {
+        console.error('Error during compatibility check:', error);
+      }
+    });
+  </script>
+</body>
+</html> 

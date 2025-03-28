@@ -1,0 +1,23 @@
+{
+  "name": "ratidzo-health-ai",
+  "version": "1.0.0",
+  "description": "Ratidzo Health AI - Medical diagnosis and chat assistant",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "start:prod": "NODE_ENV=production node serve.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "http": "^0.0.1-security",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "author": "Ratidzo Health",
+  "license": "UNLICENSED",
+  "private": true
+} 

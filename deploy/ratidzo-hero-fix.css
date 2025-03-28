@@ -1,0 +1,57 @@
+/**
+ * Ratidzo Health AI - Hero Section Image Fix
+ * This CSS only fixes the missing image in the hero section.
+ */
+
+/* Fix for missing hero image */
+.hero-image,
+.hero-right,
+[class*="hero"] img,
+[class*="hero"] [class*="right"],
+[class*="hero"] [class*="image"],
+section:first-of-type > div:nth-child(2) img,
+section:first-of-type > div:nth-child(2) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Ensure hero container has proper display */
+section:first-of-type,
+[class*="hero"] {
+  display: flex !important;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  section:first-of-type,
+  [class*="hero"] {
+    flex-direction: row;
+  }
+}
+
+/* Fix any image containers */
+[class*="image-container"],
+[class*="banner"],
+[class*="illustration"],
+[class*="graphic"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Fallback hero image if the original is missing */
+section:first-of-type > div:nth-child(2):empty::after,
+[class*="hero"] > div:nth-child(2):empty::after {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='150' fill='%231a202c'/%3E%3Cpath d='M75,150 L110,150 L120,130 L140,180 L160,120 L170,150 L225,150' stroke='url(%23brandGradient)' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M125,100 L125,200 M125,100 L165,100 Q180,100 180,115 Q180,130 165,130 L125,130 L165,200' stroke='url(%23brandGradient)' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round' opacity='0.7'/%3E%3Cdefs%3E%3ClinearGradient id='brandGradient' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2316a34a'/%3E%3Cstop offset='100%25' stop-color='%23eab308'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+} 

@@ -1,0 +1,163 @@
+/**
+ * Ratidzo Health AI - Homepage Enhancement Styles
+ * This CSS fixes layout issues and ensures all homepage elements are properly styled
+ */
+
+/* Force display of all major sections */
+#root, main, section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Enhance hero section */
+section:first-of-type {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 60vh;
+  padding: 2rem 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  section:first-of-type {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Fix headings */
+h1, h2, h3 {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-bottom: 1rem;
+}
+
+/* Main heading */
+h1 {
+  font-size: 2.5rem !important;
+  font-weight: bold !important;
+  background: linear-gradient(90deg, #16a34a, #eab308);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle */
+h2 {
+  font-size: 1.5rem !important;
+  color: #a0aec0 !important;
+  margin-bottom: 1rem;
+}
+
+/* Description text */
+p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: #e2e8f0 !important;
+  margin-bottom: 1.5rem !important;
+  max-width: 600px;
+}
+
+/* Image container and image */
+img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Ensure buttons are styled correctly */
+button, a[role="button"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.375rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Style the first button in sections (primary action) */
+section:first-of-type button:first-of-type {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Style the second button in sections (chat/secondary action) */
+section:first-of-type button:nth-of-type(2) {
+  background-color: transparent !important;
+  color: #16a34a !important;
+  border: 1px solid #16a34a !important;
+}
+
+/* Fix header/navbar */
+header, nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  z-index: 50;
+}
+
+/* Fix header buttons */
+header button:first-of-type {
+  background-color: transparent !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+header button:last-of-type {
+  background-color: #16a34a !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Ensure features section is visible if it exists */
+section:nth-of-type(2) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 2rem 1rem;
+}
+
+/* Footer if it exists */
+footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Add specific styling for the chat widget button */
+.chat-widget-button {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  border-radius: 50% !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #16a34a !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  z-index: 1000 !important;
+} 

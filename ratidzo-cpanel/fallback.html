@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratidzo Health AI - Fallback</title>
+  <style>
+    body {
+      background-color: #1a202c;
+      color: white;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #root {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+    .box {
+      background-color: #16a34a;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 500px;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      background-color: #16a34a;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #15803d;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <h1>Ratidzo Health AI</h1>
+    <p>Fallback Page - No Bundling Required</p>
+    <div class="box">
+      This is a fallback page that doesn't rely on Vite bundling. If you can see this, your browser can render basic HTML/CSS correctly.
+    </div>
+    <button onclick="document.location.href='/'">Go to Main App</button>
+  </div>
+
+  <!-- Load React from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <script>
+    // Check if React loaded correctly
+    window.addEventListener('load', function() {
+      if (window.React && window.ReactDOM) {
+        console.log('React and ReactDOM loaded successfully from CDN');
+        
+        // Create a simple React element
+        const element = React.createElement(
+          'div',
+          { style: { backgroundColor: '#4a044e', padding: '1rem', borderRadius: '0.5rem', marginTop: '1rem' } },
+          'React is working in this fallback page!'
+        );
+        
+        // Render it under the main content
+        const container = document.createElement('div');
+        document.getElementById('root').appendChild(container);
+        ReactDOM.render(element, container);
+      } else {
+        console.error('Failed to load React from CDN');
+        const errorMsg = document.createElement('p');
+        errorMsg.style.color = '#ef4444';
+        errorMsg.textContent = 'Failed to load React from CDN. This may indicate network connectivity issues.';
+        document.getElementById('root').appendChild(errorMsg);
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratidzo Health AI - Your Personal Health Assistant</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 3C9.729 3 3 9.729 3 18C3 26.271 9.729 33 18 33C26.271 33 33 26.271 33 18C33 9.729 26.271 3 18 3Z" stroke="#4ADE80" stroke-width="2"/>
+              <path d="M18 11V25" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"/>
+              <path d="M11 18H25" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="r">R</span><span class="a">a</span><span class="t">t</span><span class="i">i</span><span class="d">d</span><span class="z">z</span><span class="o">o</span>
+          </div>
+        </a>
+      </div>
+      
+      <button class="mobile-menu-button" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#health-check">Health Check</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-cta">
+        <a href="#health-check" class="btn btn-outline btn-small">Try Now</a>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu Container -->
+    <div class="mobile-menu-container">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#health-check">Health Check</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title fade-in">Your Personal<br>Health Assistant</h1>
+        <p class="hero-subtitle slide-up">Ratidzo uses artificial intelligence to analyze your symptoms and provide personalized health insights.</p>
+        <div class="hero-buttons slide-up">
+          <a href="#health-check" class="btn btn-primary">Check Symptoms</a>
+          <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual slide-up">
+        <div class="health-metrics-card">
+          <div class="ai-badge">
+            <span>AI POWERED HEALTH INSIGHTS</span>
+          </div>
+          
+          <div class="ecg-container">
+            <svg class="ecg-line" viewBox="0 0 500 100" preserveAspectRatio="none">
+              <path
+                class="ecg-path"
+                d="M0,50 L30,50 L45,50 L60,20 L75,80 L90,50 L105,50 L120,50 L135,50 L150,70 L165,30 L180,50 L195,50 L210,50 L225,50 L240,50 L255,50 L270,80 L285,20 L300,50 L315,50 L330,50 L345,50 L360,70 L375,30 L390,50 L405,50 L420,50 L435,50 L450,50 L465,50 L480,50 L500,50"
+                fill="none"
+                stroke="#FF4D4D"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          
+          <div class="health-categories">
+            <div class="health-category">
+              <div class="icon-container heart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#FF4D4D"/>
+                </svg>
+              </div>
+              <span>Heart</span>
+            </div>
+            
+            <div class="health-category">
+              <div class="icon-container vital">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17Z" fill="#FFC107"/>
+                </svg>
+              </div>
+              <span>Vitals</span>
+            </div>
+            
+            <div class="health-category">
+              <div class="icon-container diagnostics">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM9 17H7V7H9V17ZM13 17H11V11H13V17ZM17 17H15V14H17V17Z" fill="#4ADE80"/>
+                </svg>
+              </div>
+              <span>Diagnostics</span>
+            </div>
+          </div>
+          
+          <div class="symptom-analysis">
+            <h3>Symptom Analysis</h3>
+            
+            <div class="symptom-item">
+              <div class="symptom-name">Fever</div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 70%"></div>
+              </div>
+              <div class="percentage">70%</div>
+            </div>
+            
+            <div class="symptom-item">
+              <div class="symptom-name">Cough</div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 45%"></div>
+              </div>
+              <div class="percentage">45%</div>
+            </div>
+            
+            <div class="symptom-item">
+              <div class="symptom-name">Fatigue</div>
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 80%"></div>
+              </div>
+              <div class="percentage">80%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>How Ratidzo AI Helps You</h2>
+        <p>Our advanced AI analyzes your symptoms and provides personalized health insights to help you make informed decisions.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI-Powered Analysis</h3>
+          <p>Our advanced machine learning algorithms analyze your symptoms and medical history to provide accurate insights.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <h3>Medical Expertise</h3>
+          <p>Developed in collaboration with healthcare professionals to ensure reliability and clinical relevance.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Privacy Focused</h3>
+          <p>Your health data is encrypted and secure. We never share your personal information with third parties.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Accessible Anywhere</h3>
+          <p>Access your health insights on any device, anytime, anywhere with our responsive platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Check Section -->
+  <section id="health-check" class="health-check">
+    <div class="container">
+      <div class="section-header">
+        <h2>Check Your Symptoms</h2>
+        <p>Describe your symptoms and our AI will analyze them to provide personalized health insights.</p>
+      </div>
+      
+      <div class="diagnosis-form-container">
+        <form id="diagnosis-form" class="diagnosis-form">
+          <!-- Personal Information Section -->
+          <div class="form-section">
+            <h3 class="form-section-title">Personal Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="0" max="120" placeholder="Years">
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="weight">Weight (optional)</label>
+              <div class="input-with-unit">
+                <input type="number" id="weight" name="weight" min="0" max="300" placeholder="Weight">
+                <select id="weight-unit" name="weight-unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Symptoms Section -->
+          <div class="form-section">
+            <h3 class="form-section-title">Symptoms Information</h3>
+            <div class="form-group">
+              <label for="symptoms">Describe your symptoms</label>
+              <textarea id="symptoms" name="symptoms" rows="5" placeholder="Describe your symptoms in detail. For example: I have a headache, fever, and sore throat for the past 2 days."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>Primary Symptoms (select all that apply)</label>
+              <div class="checkbox-grid">
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-fever" name="symptoms[]" value="fever">
+                  <label for="symptom-fever">Fever</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-cough" name="symptoms[]" value="cough">
+                  <label for="symptom-cough">Cough</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-headache" name="symptoms[]" value="headache">
+                  <label for="symptom-headache">Headache</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-sore-throat" name="symptoms[]" value="sore-throat">
+                  <label for="symptom-sore-throat">Sore Throat</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-fatigue" name="symptoms[]" value="fatigue">
+                  <label for="symptom-fatigue">Fatigue</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-nausea" name="symptoms[]" value="nausea">
+                  <label for="symptom-nausea">Nausea</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-pain" name="symptoms[]" value="pain">
+                  <label for="symptom-pain">Pain</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="symptom-dizziness" name="symptoms[]" value="dizziness">
+                  <label for="symptom-dizziness">Dizziness</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="duration">How long have you been experiencing these symptoms?</label>
+              <select id="duration" name="duration">
+                <option value="">Select duration</option>
+                <option value="today">Today</option>
+                <option value="few-days">Past few days</option>
+                <option value="week">About a week</option>
+                <option value="weeks">Several weeks</option>
+                <option value="month">A month or more</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="severity">How severe are your symptoms?</label>
+              <div class="range-slider">
+                <input type="range" id="severity" name="severity" min="1" max="10" value="5">
+                <div class="range-labels">
+                  <span>Mild</span>
+                  <span>Moderate</span>
+                  <span>Severe</span>
+                </div>
+                <div class="range-value" id="severity-value">5</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Medical History Section -->
+          <div class="form-section">
+            <h3 class="form-section-title">Medical History</h3>
+            <div class="form-group">
+              <label>Do you have any existing medical conditions?</label>
+              <div class="checkbox-grid">
+                <div class="checkbox-item">
+                  <input type="checkbox" id="condition-diabetes" name="conditions[]" value="diabetes">
+                  <label for="condition-diabetes">Diabetes</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="condition-hypertension" name="conditions[]" value="hypertension">
+                  <label for="condition-hypertension">Hypertension</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="condition-asthma" name="conditions[]" value="asthma">
+                  <label for="condition-asthma">Asthma</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="condition-heart" name="conditions[]" value="heart">
+                  <label for="condition-heart">Heart Disease</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="other-conditions">Other conditions</label>
+                <input type="text" id="other-conditions" name="other-conditions" placeholder="Enter any other conditions">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Have you taken any medication?</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="medication-yes" name="medication" value="yes">
+                  <label for="medication-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="medication-no" name="medication" value="no">
+                  <label for="medication-no">No</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group" id="medication-details-group" style="display: none;">
+              <label for="medication-details">What medication have you taken?</label>
+              <input type="text" id="medication-details" name="medication-details" placeholder="e.g., Paracetamol, Ibuprofen">
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="reset-form">Reset Form</button>
+            <button type="submit" class="btn btn-primary">Analyze Symptoms</button>
+          </div>
+        </form>
+        
+        <div id="diagnosis-result" class="diagnosis-result" style="display: none;">
+          <h3>Your Health Analysis</h3>
+          <div class="result-content">
+            <p>Based on the symptoms you've described, here are some possible conditions to consider:</p>
+            
+            <ul class="conditions-list">
+              <!-- Results will be populated by JavaScript -->
+            </ul>
+            
+            <div class="result-actions">
+              <button type="button" class="btn btn-primary" id="download-pdf">
+                <i class="fas fa-file-pdf"></i> Download PDF Report
+              </button>
+            </div>
+            
+            <div class="disclaimer">
+              <p><strong>Important:</strong> This is not a medical diagnosis. Always consult with a healthcare professional for proper medical advice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Ratidzo Health AI</h2>
+        <p>We're on a mission to make healthcare more accessible and personalized for everyone.</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>Ratidzo Health AI combines advanced artificial intelligence with medical expertise to help you better understand your health. Our platform analyzes your symptoms and provides personalized insights to guide your healthcare decisions.</p>
+          
+          <p>We believe that everyone deserves access to quality healthcare information, regardless of where they live or their economic status. Our AI assistant is designed to be a first step in your healthcare journey, helping you understand your symptoms and determine when to seek professional care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <div class="logo">
+              <div class="logo-icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 3C9.729 3 3 9.729 3 18C3 26.271 9.729 33 18 33C26.271 33 33 26.271 33 18C33 9.729 26.271 3 18 3Z" stroke="#4ADE80" stroke-width="2"/>
+                  <path d="M18 11V25" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M11 18H25" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <span class="r">R</span><span class="a">a</span><span class="t">t</span><span class="i">i</span><span class="d">d</span><span class="z">z</span><span class="o">o</span>
+              </div>
+            </div>
+          </div>
+          <p class="footer-tagline">Your Personal Health Assistant</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#health-check">Health Check</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="https://wa.me/263784807266" target="_blank">Contact Us <i class="fab fa-whatsapp"></i></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.who.com/privacy-policy">Privacy Policy</a></li>
+            <li><a href="https://www.who.com/terms-of-service">Terms of Service</a></li>
+            <li><a href="https://www.who.com/cookie-policy">Cookie Policy</a></li>
+            <li><a href="https://www.who.com/disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ratidzo Health AI. All rights reserved.</p>
+        <p class="made-with">Developed by <a href="https://tyga-sparta.com" target="_blank">Tyga Sparta</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live Chat Button -->
+  <div class="chat-button">
+    <button id="health-chat-button">
+      <i class="fas fa-comments"></i>
+      <span>Health Chat</span>
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/chat-fix.js"></script>
+</body>
+</html>
